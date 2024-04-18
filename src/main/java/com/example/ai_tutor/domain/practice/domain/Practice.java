@@ -22,8 +22,11 @@ public class Practice extends BaseEntity {
     @Column(name="content")
     private String content;
 
-    @Column(name="answer")
-    private String answer;
+    @Column(name="user_answer")
+    private String userAnswer;
+
+    @Column(name="ai_answer")
+    private String aiAnswer;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="note_id")
@@ -39,11 +42,12 @@ public class Practice extends BaseEntity {
     private User user;
 
     @Builder
-    public Practice(Note note, Folder folder, User user, String content, String answer){
-        this.note = note;
-        this.folder = folder;
+    public Practice(User user, Folder folder, Note note, String content, String userAnswer, String aiAnswer){
         this.user = user;
+        this.folder = folder;
+        this.note = note;
         this.content = content;
-        this.answer = answer;
+        this.userAnswer = userAnswer;
+        this.aiAnswer = aiAnswer;
     }
 }
