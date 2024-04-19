@@ -31,6 +31,9 @@ public class Note extends BaseEntity {
     @Column(name="title")
     private String title;
 
+    @Column(name="step")
+    private int step;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="folder_id")
     private Folder folder;
@@ -49,10 +52,11 @@ public class Note extends BaseEntity {
     private List<Summary> summaries= new ArrayList<>();
 
     @Builder
-    public Note(Folder folder, User user, int length, String title){
+    public Note(Folder folder, User user, String title, int length, int step){
         this.folder = folder;
         this.user = user;
-        this.length = length;
         this.title = title;
+        this.length = length;
+        this.step = step;
     }
 }
