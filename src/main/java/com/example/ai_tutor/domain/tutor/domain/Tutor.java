@@ -22,11 +22,8 @@ public class Tutor extends BaseEntity {
     @Column(name="question")
     private String question;
 
-    @Column(name = "user_answer")
-    private String userAnswer;
-
-    @Column(name = "ai_answer")
-    private String aiAnswer;
+    @Column(name = "answer")
+    private String answer;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
@@ -42,12 +39,11 @@ public class Tutor extends BaseEntity {
 
 
     @Builder
-    public Tutor(User user, Folder folder, Note note, String question, String userAnswer, String aiAnswer){
+    public Tutor(User user, Folder folder, Note note, String question, String answer){
         this.user = user;
         this.folder = folder;
         this.note = note;
         this.question = question;
-        this.userAnswer = userAnswer;
-        this.aiAnswer = aiAnswer;
+        this.answer = answer;
     }
 }
